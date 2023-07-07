@@ -1,0 +1,13 @@
+tensorflow
+kapre
+click
+pyyaml
+numpy
+wavio
+faiss-cpu
+Flask
+tqdm
+pandas
+pydub
+flask-cors
+gunicorn
