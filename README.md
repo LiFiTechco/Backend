@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 # LiFi_MIR_Project
 
 
@@ -96,16 +92,5 @@ For open source projects, say how it is licensed.
 If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
 =======
 # LiFi_Backend
->>>>>>> ed3caf3b5a27861c91cd926e5ffbe9e59f773233
-=======
 # Backend
 This source code is backend api
->>>>>>> e5effc8ac307598f1cdf6719aa8f92c7515c2b6d
-=======
-# Backend
-This source code is backend api
->>>>>>> e5effc8ac307598f1cdf6719aa8f92c7515c2b6d
-=======
-# Backend
-This source code is backend api
->>>>>>> e5effc8ac307598f1cdf6719aa8f92c7515c2b6d
