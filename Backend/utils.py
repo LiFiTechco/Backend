@@ -46,8 +46,8 @@ class User_Manager:
         else:
             data = ""
         return {
-            "status": self.users_request[user_id]["status"],
-            "data": data}
+            "status_model": self.users_request[user_id]["status"],
+            "data_model": data}
     
 def process_name_song(song_name):
     print(f"song_name: {song_name}")

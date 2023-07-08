@@ -12,7 +12,9 @@ thread_control = []
 
 @main.route('/get-predict/<string:user_id>', methods=["GET"])
 def get_data_response(user_id):
-    return jsonify(Manager.get_data(user_id))
+    data = Manager.get_data(user_id)
+    print("Response: ",data)
+    return jsonify(data)
 
 @main.route('/send-query', methods=['POST'])
 def process_audio():
@@ -51,16 +53,20 @@ def process_audio():
             file.close()
         
         Manager.set_status_user_session(key,"working")
-        # new_thread = threading.Thread(target=model_predict, args=(key,output_file,nItems,predict,Manager))
-        # thread_control.append(new_thread)
-        # new_thread.start()
-        model_predict(key,output_file,nItems,predict,Manager)
+        new_thread = threading.Thread(target=model_predict, args=(key,output_file,nItems,predict,Manager))
+        thread_control.append(new_thread)
+        new_thread.start()
+        # model_predict(key,output_file,nItems,predict,Manager)
         return "Successfully"
     except Exception as e:
         Manager.write_data(key,"error",{"error":str(e)})
         print(f"Error: {e}")
         return "An error occurred"
-    
+
+@main.route('/check-server-status',methods=["GET"])
+def check_server_status():
+    return jsonify({"server_status":"ready"})
+
 @main.route('/')
 def main_template():
     return "<h1>This is API Server</h1><p>Hello, World!</p>"
