@@ -21,9 +21,9 @@ class Search_Engine:
         
         
     def search(self,query,k,just_best_item=True):
-        print("Check load change 2")
+        # print("Check load change 2")
         D,I = self.index.search(x=query,k=k)
-        print(f"I shape: {I.shape}")
+        # print(f"I shape: {I.shape}")
         n = query.shape[0]*query.shape[1]
         songs = {}
         songs_count = {}

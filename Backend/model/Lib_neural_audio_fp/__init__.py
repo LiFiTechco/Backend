@@ -44,7 +44,7 @@ def get_model():
 
     c_manager = tf.train.CheckpointManager(checkpoint, checkpoint_dir, max_to_keep=None)
     latest_checkpoint = c_manager.latest_checkpoint
-    print(f"last_checkpoint: {latest_checkpoint}")
+    # print(f"last_checkpoint: {latest_checkpoint}")
     checkpoint.restore(latest_checkpoint)
 
     return Model(m_fp,m_pre)
@@ -88,11 +88,11 @@ def encode_query(audio_query_file,model,
     n_frames_in_hop = fs * hop
     
     n_frames = file.getnframes()
-    print(f"encode_query n_frames: {n_frames}")
+    # print(f"encode_query n_frames: {n_frames}")
     n_seg = int((n_frames - n_frames_in_seg) // n_frames_in_hop)
     last = int(n_frames-(n_seg*n_frames_in_hop+n_frames_in_seg))
-    print(f"encode_query n_seg: {n_seg}")
-    print(f"encode_query last: {n_frames-(n_seg*n_frames_in_hop+n_frames_in_seg)}")
+    # print(f"encode_query n_seg: {n_seg}")
+    # print(f"encode_query last: {n_frames-(n_seg*n_frames_in_hop+n_frames_in_seg)}")
     
     seg_queries = []
     for seg in tqdm(range(n_seg),):
@@ -109,8 +109,4 @@ def encode_query(audio_query_file,model,
         data.extend(add)
         seg_queries.append(data)
     file.close()
-    out = np.array(seg_queries).reshape(-1,1,8000*duration)
-    print(f"Before model - encode shape: {out.shape}")
-    out = model(out).numpy()
-    print(f"After model - encode shape: {out.shape}")
-    return out
+    return model(np.array(seg_queries).reshape(-1,1,8000*duration)).numpy()

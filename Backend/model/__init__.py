@@ -12,7 +12,7 @@ class MainModel:
 
     def search(self,audio_file,k,just_best_item,**kwargs):
         query = encode_query(audio_file, self.fp_model,**kwargs)
-        print(f"MainModel search query encoding shape: {query}")
+        # print(f"MainModel search query encoding shape: {query}")
         return self.search_engine.search(query,k,just_best_item)
 
 __model = MainModel()
